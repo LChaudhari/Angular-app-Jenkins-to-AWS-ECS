@@ -23,13 +23,13 @@ pipeline {
                 sh "npm install"
             }
         }
-        stage('Build') {
-            steps {
-                // Build the Angular app
-                sh "ng build --prod "
-//               --base-href=/myapp/
-            }
-        }
+//         stage('Build') {
+//             steps {
+//                 // Build the Angular app
+//                 sh "ng build --prod "
+// //               --base-href=/myapp/
+//             }
+//         }
   
         stage("Build Docker image") {
             steps {
