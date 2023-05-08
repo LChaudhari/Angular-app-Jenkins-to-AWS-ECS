@@ -58,7 +58,7 @@ pipeline {
             steps{
                 withAWS(credentials: registryCredential, region: "${AWS_DEFAULT_REGION}") {
 //                     script {
-                    sh "aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --force-new-deployment --image ${env.AWS_ACCOUNT_ID}.dkr.ecr.${env.AWS_DEFAULT_REGION}.amazonaws.com/${env.IMAGE_REPO_NAME}:${env.IMAGE_TAG}"
+                    sh "aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --force-new-deployment"
 //                         sh './script.sh'
 //                     }
                 } 
