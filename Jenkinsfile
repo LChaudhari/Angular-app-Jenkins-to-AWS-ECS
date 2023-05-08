@@ -15,21 +15,10 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-                // Install Node.js and Angular CLI
-//                 sh "curl -sL https://deb.nodesource.com/setup_14.x | bash -"
-//                 sh "sudo apt install nodejs"
-//                 sh "npm install -g @angular/cli"
-//                 // Install project dependencies
                 sh "npm install"
             }
         }
-//         stage('Build') {
-//             steps {
-//                 // Build the Angular app
-//                 sh "ng build --prod "
-// //               --base-href=/myapp/
-//             }
-//         }
+
   
         stage("Build Docker image") {
             steps {
@@ -57,10 +46,7 @@ pipeline {
         stage('Deploy') {
             steps{
                 withAWS(credentials: registryCredential, region: "${AWS_DEFAULT_REGION}") {
-//                     script {
                     sh "aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --force-new-deployment"
-//                         sh './script.sh'
-//                     }
                 } 
             }
         }    
